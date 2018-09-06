@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title> Generic info about library</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Local Library Home</h1>
+    <p>Welcome to LocalLibrary, a website developed by <em>Orsi</em> using <em>Mozilla Developer Network Guide</em>!</p>
+
+    <h2>Dynamic content</h2>
+    <p>The library has the following record counts:</p>
+    <ul>
+        <li><strong>Books:</strong> {{ book_nr }}</li>
+        <li><strong>Copies:</strong> {{ bookinst_nr }}</li>
+        <li><strong>Copies available:</strong> {{ av_books }}</li>
+        <li><strong>Authors:</strong> {{ author_nr }}</li>
+        <!--<li><strong>Titles containing a word: </strong> {{cw_books}} </li>-->
+        <!--<li><strong>Genre containing a word: </strong> {{cw_genre}} </li>-->
+    </ul>
+{% endblock %}
