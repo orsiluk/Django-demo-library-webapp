@@ -18,4 +18,6 @@
         <!--<li><strong>Titles containing a word: </strong> {{cw_books}} </li>-->
         <!--<li><strong>Genre containing a word: </strong> {{cw_genre}} </li>-->
     </ul>
+
+    <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
 {% endblock %}

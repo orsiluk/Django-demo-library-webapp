@@ -18,11 +18,16 @@ def index(request):
     # cw_books = Book.objects.filter(title__icontains = 'and').count()
     # cw_genre = Book.objects.filter(genre__name__icontains = 'fIction').count() #Needed_name because genre is a ManyToMany mapping
 
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
     context = {
         'book_nr': book_nr,
         'bookinst_nr': bookinst_nr,
         'av_books': av_books,
         'author_nr': author_nr,
+        'num_visits': num_visits,
         # 'cw_books': cw_books,
         # 'cw_genre': cw_genre,
     }
