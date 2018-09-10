@@ -12,4 +12,8 @@ urlpatterns = [
     # key). This is the id that is being used to store the book uniquely in the database, as defined in the Book Model.
     path('authors', views.AuthorListView.as_view(), name='authors'),
     path('author/<int:pk>', views.AuthorDetailView.as_view(), name='author-detail'),
+    path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
+    path('allbooks/', views.AllLoanedBooksView.as_view(), name='all-borrowed'),
+    path('book/<uuid:pk>/renew/', views.renew_book_librarian, name='renew-book-librarian'),
+
 ]
