@@ -97,7 +97,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 import datetime
 
-from catalog.forms import RenewBookForm
+from .forms import RenewBookForm
 
 @permission_required('catalog.can_mark_returned')
 def renew_book_librarian(request, pk):
@@ -130,3 +130,22 @@ def renew_book_librarian(request, pk):
     }
 
     return render(request, 'catalog/book_renew_librarian.html', context)
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+class AuthorCreate(CreateView, PermissionRequiredMixin):
+    model = Author
+    fields = '__all__'
+    initial = {'date_of_death': None}
+    permission_required = 'catalog.can_mark_returned'
+
+class AuthorUpdate(UpdateView, PermissionRequiredMixin):
+    model = Author
+    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
+    permission_required = 'catalog.can_mark_returned'
+
+class AuthorDelete(DeleteView, PermissionRequiredMixin):
+    model = Author
+    success_url = reverse_lazy('authors')
+    permission_required = 'catalog.can_mark_returned'
